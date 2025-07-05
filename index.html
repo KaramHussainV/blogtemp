@@ -24,24 +24,47 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Animated Background -->
+    <!-- Enhanced Animated Background -->
     <div class="animated-bg">
+        <!-- Background Grid Pattern -->
         <div class="subtle-grid"></div>
+        
+        <!-- Floating Dots - Adjust quantity by changing the loop count in script.js -->
         <div class="floating-dots"></div>
+        
+        <!-- Gentle Waves - Modify wave-count class to increase/decrease waves -->
         <div class="gentle-waves"></div>
+        
+        <!-- Geometric Shapes - Control density via geometric-density class -->
+        <div class="geometric-shapes"></div>
+        
+        <!-- Spiral Lines - Adjust spiral-count for more/fewer spirals -->
+        <div class="spiral-container"></div>
+        
+        <!-- Network Lines - Modify network-density for line concentration -->
+        <div class="network-lines"></div>
+        
+        <!-- 3D Cubes - Change cube-density class for concentration -->
+        <div class="floating-cubes"></div>
+        
+        <!-- Particle System - Adjust particle-density for concentration -->
+        <div class="particle-system"></div>
     </div>
     
-    <!-- Navigation -->
+    <!-- Responsive Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container">
+        <div class="container-fluid px-3">
             <a class="navbar-brand" href="https://www.cloudgenie.tech" data-aos="fade-right">
                 <img src="https://cloudgenie.tech/logo.png" alt="CloudGenie Logo" class="logo">
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <!-- Mobile Menu Button (Hidden on larger screens) -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-compass"></i>
+                <span class="ms-2">Explore</span>
             </button>
             
+            <!-- Desktop Navigation -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown" data-aos="fade-down" data-aos-delay="200">
@@ -50,15 +73,107 @@
                             <span>Explore More</span>
                             <i class="fas fa-chevron-down ms-1"></i>
                         </a>
-                        <ul class="dropdown-menu explore-dropdown" aria-labelledby="exploreDropdown">
-                            <div class="dropdown-bg"></div>
-                            <li><a class="dropdown-item" href="#"><i class="fab fa-aws"></i> AWS Migration Guide</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cloud"></i> Cloud Architecture Best Practices</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-shield-alt"></i> Security in the Cloud</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> DevOps Automation</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-server"></i> Infrastructure as Code</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-database"></i> Database Migration Strategies</a></li>
-                        </ul>
+                        
+                        <!-- Enhanced Mega Menu Dropdown -->
+                        <div class="dropdown-menu explore-dropdown" aria-labelledby="exploreDropdown">
+                            <div class="dropdown-bg-animation"></div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <!-- Migration Category -->
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <h6 class="dropdown-category">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            Migration Services
+                                        </h6>
+                                        <div class="category-items">
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fab fa-aws"></i>
+                                                <div class="item-content">
+                                                    <span class="item-title">On-Premises to AWS</span>
+                                                    <small class="item-desc">Complete migration guide</small>
+                                                </div>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fab fa-microsoft"></i>
+                                                <div class="item-content">
+                                                    <span class="item-title">Azure to AWS Migration</span>
+                                                    <small class="item-desc">Cross-cloud migration</small>
+                                                </div>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fab fa-google"></i>
+                                                <div class="item-content">
+                                                    <span class="item-title">GCP to AWS Migration</span>
+                                                    <small class="item-desc">Multi-cloud strategy</small>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Cloud Architecture Category -->
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <h6 class="dropdown-category">
+                                            <i class="fas fa-sitemap"></i>
+                                            Cloud Architecture
+                                        </h6>
+                                        <div class="category-items">
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-shield-alt"></i>
+                                                <div class="item-content">
+                                                    <span class="item-title">Security Best Practices</span>
+                                                    <small class="item-desc">Enterprise security</small>
+                                                </div>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-cogs"></i>
+                                                <div class="item-content">
+                                                    <span class="item-title">DevOps Automation</span>
+                                                    <small class="item-desc">CI/CD pipelines</small>
+                                                </div>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-server"></i>
+                                                <div class="item-content">
+                                                    <span class="item-title">Infrastructure as Code</span>
+                                                    <small class="item-desc">Terraform & CloudFormation</small>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Database & Storage Category -->
+                                    <div class="col-lg-4 col-md-12 mb-4">
+                                        <h6 class="dropdown-category">
+                                            <i class="fas fa-database"></i>
+                                            Database & Storage
+                                        </h6>
+                                        <div class="category-items">
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-database"></i>
+                                                <div class="item-content">
+                                                    <span class="item-title">Database Migration</span>
+                                                    <small class="item-desc">Zero-downtime migration</small>
+                                                </div>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-hdd"></i>
+                                                <div class="item-content">
+                                                    <span class="item-title">Storage Solutions</span>
+                                                    <small class="item-desc">S3, EBS, EFS strategies</small>
+                                                </div>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-chart-line"></i>
+                                                <div class="item-content">
+                                                    <span class="item-title">Performance Optimization</span>
+                                                    <small class="item-desc">Cost & speed optimization</small>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -286,14 +401,23 @@
                                 To secure the RD Gateway, a self-signed certificate was created using PowerShell:
                             </p>
                             
-                            <div class="code-block">
+                            <div class="modern-code-block">
                                 <div class="code-header">
-                                    <span class="code-language">PowerShell</span>
+                                    <div class="code-info">
+                                        <span class="code-language">
+                                            <i class="fab fa-microsoft"></i>
+                                            PowerShell
+                                        </span>
+                                        <span class="code-filename">certificate-creation.ps1</span>
+                                    </div>
                                     <button class="copy-btn" onclick="copyCode(this)">
                                         <i class="fas fa-copy"></i>
+                                        <span class="copy-text">Copy</span>
                                     </button>
                                 </div>
-                                <pre><code class="language-powershell">New-SelfSignedCertificate -DnsName "ec2-54-205-243-231.compute-1.amazonaws.com" -CertStoreLocation "Cert:\LocalMachine\My"</code></pre>
+                                <div class="code-content">
+                                    <pre><code class="language-powershell">New-SelfSignedCertificate -DnsName "ec2-54-205-243-231.compute-1.amazonaws.com" -CertStoreLocation "Cert:\LocalMachine\My"</code></pre>
+                                </div>
                             </div>
                         </div>
 
@@ -418,52 +542,93 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Professional Footer -->
     <footer class="footer">
+        <!-- Footer Background Animation -->
+        <div class="footer-animation">
+            <!-- Floating dots in footer - adjust dot-count class for quantity -->
+            <div class="footer-dots"></div>
+            <!-- Floating circles - modify circle-density for concentration -->
+            <div class="footer-circles"></div>
+        </div>
+        
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
+            <div class="row align-items-start">
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="footer-brand">
                         <img src="https://cloudgenie.tech/lightlogo.png" alt="CloudGenie Logo" class="footer-logo">
                         <p class="footer-description">
-                            Transforming businesses through cloud innovation and DevOps excellence.
+                            Transforming businesses through cloud innovation and DevOps excellence. Your trusted partner for seamless cloud migrations and infrastructure optimization.
                         </p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/company/cloudgenie-tech" class="social-link" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@CloudGenie-c3r" class="social-link" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="mailto:cloudgeniee@gmail.com" class="social-link" aria-label="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+                
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h5 class="footer-title">Contact Us</h5>
+                    <h5 class="footer-title">Services</h5>
                     <ul class="footer-links">
-                        <li><a href="https://cloudgenie.tech/">Home</a></li>
-                        <li><a href="https://www.fiverr.com/s/pdXyyRR">Fiverr</a></li>
-                        <li><a href="#">+923169583685</a></li>
-                        <li><a href="mailto:cloudgeniee@gmail.com">contact@cloudgenie.tech</a></li>
+                        <li><a href="#">Cloud Migration</a></li>
+                        <li><a href="#">DevOps Consulting</a></li>
+                        <li><a href="#">Infrastructure Design</a></li>
+                        <li><a href="#">Security Audits</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <h5 class="footer-title">Social</h5>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/cloudgenie-tech" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="www.youtube.com/@CloudGenie-c3r" class="social-link">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                    <div class="newsletter">
-                        <h6>Subscribe to our newsletter</h6>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Enter your email" class="newsletter-input">
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Whitepapers</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="footer-title">Stay Connected</h5>
+                    <p class="footer-newsletter-desc">Get the latest cloud insights and migration strategies delivered to your inbox.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
                             <button type="submit" class="newsletter-btn">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
-                        </form>
+                        </div>
+                    </form>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+923169583685</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>cloudgeniee@gmail.com</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="footer-bottom">
-                        <p>&copy; 2024 CloudGenie. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">&copy; 2024 CloudGenie. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                            <a href="#">Cookie Policy</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -275,19 +275,28 @@ function copyCode(button) {
     });
 }
 
-// Blog Slider Functionality
+// Fixed Blog Slider Functionality
 function initBlogSlider() {
     const slider = document.querySelector('.blogs-slider');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     const blogCards = document.querySelectorAll('.blog-card');
     
+    if (!slider || !prevBtn || !nextBtn || blogCards.length === 0) return;
+    
     let currentIndex = 0;
-    const cardsToShow = window.innerWidth <= 768 ? 1 : window.innerWidth <= 992 ? 2 : 3;
-    const maxIndex = Math.max(0, blogCards.length - cardsToShow);
+    let cardsToShow = getCardsToShow();
+    let maxIndex = Math.max(0, blogCards.length - cardsToShow);
+    
+    function getCardsToShow() {
+        if (window.innerWidth <= 576) return 1;
+        if (window.innerWidth <= 992) return 2;
+        return 3;
+    }
     
     function updateSlider() {
-        const translateX = -(currentIndex * (100 / cardsToShow));
+        const cardWidth = 100 / cardsToShow;
+        const translateX = -(currentIndex * cardWidth);
         slider.style.transform = `translateX(${translateX}%)`;
         
         // Update button states
@@ -296,6 +305,29 @@ function initBlogSlider() {
         
         prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
         nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+    }
+    
+    function updateResponsive() {
+        cardsToShow = getCardsToShow();
+        maxIndex = Math.max(0, blogCards.length - cardsToShow);
+        
+        // Reset to first slide if current index is out of bounds
+        if (currentIndex > maxIndex) {
+            currentIndex = maxIndex;
+        }
+        
+        // Update card flex basis
+        blogCards.forEach(card => {
+            if (cardsToShow === 1) {
+                card.style.flex = '0 0 100%';
+            } else if (cardsToShow === 2) {
+                card.style.flex = '0 0 calc(50% - 0.5rem)';
+            } else {
+                card.style.flex = '0 0 calc(33.333% - 1.33rem)';
+            }
+        });
+        
+        updateSlider();
     }
     
     prevBtn.addEventListener('click', () => {
@@ -313,7 +345,7 @@ function initBlogSlider() {
     });
     
     // Auto-slide functionality
-    setInterval(() => {
+    let autoSlideInterval = setInterval(() => {
         if (currentIndex >= maxIndex) {
             currentIndex = 0;
         } else {
@@ -322,15 +354,35 @@ function initBlogSlider() {
         updateSlider();
     }, 5000);
     
+    // Pause auto-slide on hover
+    const sliderContainer = document.querySelector('.blogs-slider-container');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+        
+        sliderContainer.addEventListener('mouseleave', () => {
+            autoSlideInterval = setInterval(() => {
+                if (currentIndex >= maxIndex) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex++;
+                }
+                updateSlider();
+            }, 5000);
+        });
+    }
+    
     // Initialize
-    updateSlider();
+    updateResponsive();
     
     // Update on window resize
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        const newCardsToShow = window.innerWidth <= 768 ? 1 : window.innerWidth <= 992 ? 2 : 3;
-        if (newCardsToShow !== cardsToShow) {
-            location.reload(); // Simple solution for responsive changes
-        }
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateResponsive();
+        }, 250);
     });
 }
 
@@ -409,7 +461,7 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const exploreDropdown = document.getElementById('exploreDropdown');
         const exploreToggle = document.getElementById('exploreToggle');
-        if (exploreDropdown.classList.contains('show')) {
+        if (exploreDropdown && exploreDropdown.classList.contains('show')) {
             exploreDropdown.classList.remove('show');
             exploreToggle.classList.remove('active');
         }

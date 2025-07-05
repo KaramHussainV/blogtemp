@@ -32,9 +32,6 @@
         <!-- Floating Dots - Adjust quantity by changing the loop count in script.js -->
         <div class="floating-dots"></div>
         
-        <!-- Gentle Waves - Modify wave-count class to increase/decrease waves -->
-        <div class="gentle-waves"></div>
-        
         <!-- Geometric Shapes - Control density via geometric-density class -->
         <div class="geometric-shapes"></div>
         
@@ -51,131 +48,128 @@
         <div class="particle-system"></div>
     </div>
     
-    <!-- Responsive Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container-fluid px-3">
-            <a class="navbar-brand" href="https://www.cloudgenie.tech" data-aos="fade-right">
+    <!-- Fixed Responsive Navigation -->
+    <nav class="navbar fixed-top" id="mainNav">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="https://www.cloudgenie.tech">
                 <img src="https://cloudgenie.tech/logo.png" alt="CloudGenie Logo" class="logo">
             </a>
             
-            <!-- Mobile Menu Button (Hidden on larger screens) -->
-            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <!-- Explore Button -->
+            <button class="explore-toggle" id="exploreToggle">
                 <i class="fas fa-compass"></i>
-                <span class="ms-2">Explore</span>
+                <span>Explore</span>
+                <i class="fas fa-chevron-down arrow"></i>
             </button>
-            
-            <!-- Desktop Navigation -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown" data-aos="fade-down" data-aos-delay="200">
-                        <a class="nav-link explore-btn" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-compass"></i>
-                            <span>Explore More</span>
-                            <i class="fas fa-chevron-down ms-1"></i>
-                        </a>
-                        
-                        <!-- Enhanced Mega Menu Dropdown -->
-                        <div class="dropdown-menu explore-dropdown" aria-labelledby="exploreDropdown">
-                            <div class="dropdown-bg-animation"></div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <!-- Migration Category -->
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <h6 class="dropdown-category">
-                                            <i class="fas fa-cloud-upload-alt"></i>
-                                            Migration Services
-                                        </h6>
-                                        <div class="category-items">
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fab fa-aws"></i>
-                                                <div class="item-content">
-                                                    <span class="item-title">On-Premises to AWS</span>
-                                                    <small class="item-desc">Complete migration guide</small>
-                                                </div>
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fab fa-microsoft"></i>
-                                                <div class="item-content">
-                                                    <span class="item-title">Azure to AWS Migration</span>
-                                                    <small class="item-desc">Cross-cloud migration</small>
-                                                </div>
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fab fa-google"></i>
-                                                <div class="item-content">
-                                                    <span class="item-title">GCP to AWS Migration</span>
-                                                    <small class="item-desc">Multi-cloud strategy</small>
-                                                </div>
-                                            </a>
-                                        </div>
+        </div>
+        
+        <!-- Dropdown Menu -->
+        <div class="explore-dropdown" id="exploreDropdown">
+            <div class="dropdown-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Migration Category -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <h6 class="dropdown-category">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                Migration Services
+                            </h6>
+                            <div class="category-items">
+                                <a href="#" class="dropdown-item">
+                                    <i class="fab fa-aws"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">On-Premises to AWS</span>
+                                        <small class="item-desc">Complete migration guide</small>
                                     </div>
-                                    
-                                    <!-- Cloud Architecture Category -->
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <h6 class="dropdown-category">
-                                            <i class="fas fa-sitemap"></i>
-                                            Cloud Architecture
-                                        </h6>
-                                        <div class="category-items">
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fas fa-shield-alt"></i>
-                                                <div class="item-content">
-                                                    <span class="item-title">Security Best Practices</span>
-                                                    <small class="item-desc">Enterprise security</small>
-                                                </div>
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fas fa-cogs"></i>
-                                                <div class="item-content">
-                                                    <span class="item-title">DevOps Automation</span>
-                                                    <small class="item-desc">CI/CD pipelines</small>
-                                                </div>
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fas fa-server"></i>
-                                                <div class="item-content">
-                                                    <span class="item-title">Infrastructure as Code</span>
-                                                    <small class="item-desc">Terraform & CloudFormation</small>
-                                                </div>
-                                            </a>
-                                        </div>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fab fa-microsoft"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">Azure to AWS Migration</span>
+                                        <small class="item-desc">Cross-cloud migration</small>
                                     </div>
-                                    
-                                    <!-- Database & Storage Category -->
-                                    <div class="col-lg-4 col-md-12 mb-4">
-                                        <h6 class="dropdown-category">
-                                            <i class="fas fa-database"></i>
-                                            Database & Storage
-                                        </h6>
-                                        <div class="category-items">
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fas fa-database"></i>
-                                                <div class="item-content">
-                                                    <span class="item-title">Database Migration</span>
-                                                    <small class="item-desc">Zero-downtime migration</small>
-                                                </div>
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fas fa-hdd"></i>
-                                                <div class="item-content">
-                                                    <span class="item-title">Storage Solutions</span>
-                                                    <small class="item-desc">S3, EBS, EFS strategies</small>
-                                                </div>
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fas fa-chart-line"></i>
-                                                <div class="item-content">
-                                                    <span class="item-title">Performance Optimization</span>
-                                                    <small class="item-desc">Cost & speed optimization</small>
-                                                </div>
-                                            </a>
-                                        </div>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fab fa-google"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">GCP to AWS Migration</span>
+                                        <small class="item-desc">Multi-cloud strategy</small>
                                     </div>
-                                </div>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-server"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">Database Migration</span>
+                                        <small class="item-desc">Zero-downtime migration</small>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                    </li>
-                </ul>
+                        
+                        <!-- Cloud Architecture Category -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <h6 class="dropdown-category">
+                                <i class="fas fa-sitemap"></i>
+                                Cloud Architecture
+                            </h6>
+                            <div class="category-items">
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">Security Best Practices</span>
+                                        <small class="item-desc">Enterprise security</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-cogs"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">DevOps Automation</span>
+                                        <small class="item-desc">CI/CD pipelines</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-server"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">Infrastructure as Code</span>
+                                        <small class="item-desc">Terraform & CloudFormation</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Database & Storage Category -->
+                        <div class="col-lg-4 col-md-12 mb-4">
+                            <h6 class="dropdown-category">
+                                <i class="fas fa-database"></i>
+                                Database & Storage
+                            </h6>
+                            <div class="category-items">
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-database"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">Database Optimization</span>
+                                        <small class="item-desc">Performance tuning</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-hdd"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">Storage Solutions</span>
+                                        <small class="item-desc">S3, EBS, EFS strategies</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <div class="item-content">
+                                        <span class="item-title">Cost Optimization</span>
+                                        <small class="item-desc">Reduce cloud costs</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -548,12 +542,10 @@
         <div class="footer-animation">
             <!-- Floating dots in footer - adjust dot-count class for quantity -->
             <div class="footer-dots"></div>
-            <!-- Floating circles - modify circle-density for concentration -->
-            <div class="footer-circles"></div>
         </div>
         
         <div class="container">
-            <div class="row align-items-start">
+            <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="footer-brand">
                         <img src="https://cloudgenie.tech/lightlogo.png" alt="CloudGenie Logo" class="footer-logo">

@@ -11,8 +11,8 @@ AOS.init({
 function createEnhancedBackgroundElements() {
     const animatedBg = document.querySelector('.animated-bg');
     
-    // Create Floating Dots - Adjust DOT_COUNT to change quantity (default: 25)
-    const DOT_COUNT = 25; // Change this number to increase/decrease dot concentration
+    // Create Floating Dots - Adjust DOT_COUNT to change quantity (default: 30)
+    const DOT_COUNT = 30; // Change this number to increase/decrease dot concentration
     const floatingDots = document.querySelector('.floating-dots');
     
     for (let i = 0; i < DOT_COUNT; i++) {
@@ -27,21 +27,8 @@ function createEnhancedBackgroundElements() {
         floatingDots.appendChild(dot);
     }
     
-    // Create Gentle Waves - Modify WAVE_COUNT for more/fewer waves
-    const WAVE_COUNT = 3; // Change this number for wave concentration
-    const gentleWaves = document.querySelector('.gentle-waves');
-    
-    for (let i = 0; i < WAVE_COUNT; i++) {
-        const wave = document.createElement('div');
-        wave.className = 'wave';
-        wave.style.animationDelay = -(i * 5) + 's';
-        wave.style.opacity = 0.7 - (i * 0.2); // Adjust opacity for visibility
-        wave.style.height = (100 - i * 20) + 'px';
-        gentleWaves.appendChild(wave);
-    }
-    
     // Create Geometric Shapes - Control SHAPE_DENSITY for concentration
-    const SHAPE_DENSITY = 12; // Change this number for shape concentration
+    const SHAPE_DENSITY = 15; // Change this number for shape concentration
     const geometricShapes = document.querySelector('.geometric-shapes');
     const shapeTypes = ['triangle', 'square', 'circle'];
     
@@ -59,7 +46,7 @@ function createEnhancedBackgroundElements() {
     }
     
     // Create Spiral Lines - Adjust SPIRAL_COUNT for more/fewer spirals
-    const SPIRAL_COUNT = 6; // Change this number for spiral concentration
+    const SPIRAL_COUNT = 8; // Change this number for spiral concentration
     const spiralContainer = document.querySelector('.spiral-container');
     
     for (let i = 0; i < SPIRAL_COUNT; i++) {
@@ -76,7 +63,7 @@ function createEnhancedBackgroundElements() {
     }
     
     // Create Network Lines - Modify NETWORK_DENSITY for line concentration
-    const NETWORK_DENSITY = 8; // Change this number for network line concentration
+    const NETWORK_DENSITY = 10; // Change this number for network line concentration
     const networkLines = document.querySelector('.network-lines');
     
     for (let i = 0; i < NETWORK_DENSITY; i++) {
@@ -92,7 +79,7 @@ function createEnhancedBackgroundElements() {
     }
     
     // Create 3D Floating Cubes - Change CUBE_DENSITY for concentration
-    const CUBE_DENSITY = 8; // Change this number for cube concentration
+    const CUBE_DENSITY = 10; // Change this number for cube concentration
     const floatingCubes = document.querySelector('.floating-cubes');
     
     for (let i = 0; i < CUBE_DENSITY; i++) {
@@ -110,7 +97,7 @@ function createEnhancedBackgroundElements() {
     }
     
     // Create Particle System - Adjust PARTICLE_DENSITY for concentration
-    const PARTICLE_DENSITY = 20; // Change this number for particle concentration
+    const PARTICLE_DENSITY = 25; // Change this number for particle concentration
     const particleSystem = document.querySelector('.particle-system');
     
     for (let i = 0; i < PARTICLE_DENSITY; i++) {
@@ -130,7 +117,7 @@ function createEnhancedBackgroundElements() {
 // Footer Animation System
 function createFooterAnimations() {
     // Footer Floating Dots - Adjust FOOTER_DOT_COUNT for quantity
-    const FOOTER_DOT_COUNT = 15; // Change this number for footer dot concentration
+    const FOOTER_DOT_COUNT = 20; // Change this number for footer dot concentration
     const footerDots = document.querySelector('.footer-dots');
     
     for (let i = 0; i < FOOTER_DOT_COUNT; i++) {
@@ -145,35 +132,56 @@ function createFooterAnimations() {
         dot.style.opacity = 0.3 + Math.random() * 0.3;
         footerDots.appendChild(dot);
     }
-    
-    // Footer Floating Circles - Modify FOOTER_CIRCLE_DENSITY for concentration
-    const FOOTER_CIRCLE_DENSITY = 8; // Change this number for circle concentration
-    const footerCircles = document.querySelector('.footer-circles');
-    
-    for (let i = 0; i < FOOTER_CIRCLE_DENSITY; i++) {
-        const circle = document.createElement('div');
-        circle.className = 'footer-circle';
-        const size = 40 + Math.random() * 60;
-        circle.style.width = circle.style.height = size + 'px';
-        circle.style.top = Math.random() * 100 + '%';
-        circle.style.left = Math.random() * 100 + '%';
-        circle.style.animationDelay = Math.random() * 25 + 's';
-        circle.style.animationDuration = (20 + Math.random() * 10) + 's';
-        // Adjust opacity for concentration control
-        circle.style.opacity = 0.2 + Math.random() * 0.3;
-        footerCircles.appendChild(circle);
-    }
 }
 
-// Navbar Scroll Effect
-window.addEventListener('scroll', function() {
+// Fixed Navbar Functionality
+function initNavbar() {
+    const exploreToggle = document.getElementById('exploreToggle');
+    const exploreDropdown = document.getElementById('exploreDropdown');
     const navbar = document.getElementById('mainNav');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+    
+    // Toggle dropdown
+    exploreToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const isOpen = exploreDropdown.classList.contains('show');
+        
+        if (isOpen) {
+            exploreDropdown.classList.remove('show');
+            exploreToggle.classList.remove('active');
+        } else {
+            exploreDropdown.classList.add('show');
+            exploreToggle.classList.add('active');
+        }
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!exploreToggle.contains(e.target) && !exploreDropdown.contains(e.target)) {
+            exploreDropdown.classList.remove('show');
+            exploreToggle.classList.remove('active');
+        }
+    });
+    
+    // Close dropdown when clicking on dropdown items
+    const dropdownItems = exploreDropdown.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function() {
+            exploreDropdown.classList.remove('show');
+            exploreToggle.classList.remove('active');
+        });
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
 
 // Smooth Scrolling for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -326,60 +334,6 @@ function initBlogSlider() {
     });
 }
 
-// Enhanced Dropdown Functionality for Mobile
-function initResponsiveDropdown() {
-    const dropdownToggle = document.querySelector('#exploreDropdown');
-    const dropdownMenu = document.querySelector('.explore-dropdown');
-    const navbarCollapse = document.querySelector('.navbar-collapse');
-    
-    // Handle mobile dropdown behavior
-    if (window.innerWidth <= 768) {
-        dropdownToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Toggle dropdown visibility
-            if (dropdownMenu.style.display === 'block') {
-                dropdownMenu.style.display = 'none';
-            } else {
-                dropdownMenu.style.display = 'block';
-            }
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                dropdownMenu.style.display = 'none';
-            }
-        });
-    }
-}
-
-// Dynamic Particle Creation
-function createDynamicParticle() {
-    const container = document.querySelector('.particle-system');
-    if (!container) return;
-    
-    const particle = document.createElement('div');
-    particle.className = 'particle dynamic-particle';
-    
-    // Random position and properties
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.width = (2 + Math.random() * 4) + 'px';
-    particle.style.height = particle.style.width;
-    particle.style.opacity = 0.2 + Math.random() * 0.4;
-    particle.style.animation = `particleFloat ${10 + Math.random() * 10}s linear infinite`;
-    
-    container.appendChild(particle);
-    
-    // Remove after animation
-    setTimeout(() => {
-        if (particle.parentNode) {
-            particle.remove();
-        }
-    }, 20000);
-}
-
 // Newsletter Form Handling
 function initNewsletterForm() {
     const form = document.querySelector('.newsletter-form');
@@ -450,6 +404,16 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'Tab') {
         document.body.classList.add('keyboard-navigation');
     }
+    
+    // Close dropdown on Escape key
+    if (e.key === 'Escape') {
+        const exploreDropdown = document.getElementById('exploreDropdown');
+        const exploreToggle = document.getElementById('exploreToggle');
+        if (exploreDropdown.classList.contains('show')) {
+            exploreDropdown.classList.remove('show');
+            exploreToggle.classList.remove('active');
+        }
+    }
 });
 
 document.addEventListener('mousedown', function() {
@@ -486,6 +450,9 @@ imageUrls.forEach(url => {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize navbar
+    initNavbar();
+    
     // Create enhanced background elements
     createEnhancedBackgroundElements();
     
@@ -494,9 +461,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize blog slider
     initBlogSlider();
-    
-    // Initialize responsive dropdown
-    initResponsiveDropdown();
     
     // Initialize newsletter form
     initNewsletterForm();
@@ -512,25 +476,14 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
-    
-    // Create dynamic particles periodically
-    setInterval(createDynamicParticle, 3000);
-});
-
-// Handle window resize for responsive behavior
-window.addEventListener('resize', function() {
-    // Reinitialize responsive dropdown on resize
-    initResponsiveDropdown();
 });
 
 console.log('CloudGenie Professional Blog Template Loaded Successfully! ☁️✨');
 console.log('Background Animation Controls:');
-console.log('- Adjust DOT_COUNT for floating dots concentration');
-console.log('- Modify WAVE_COUNT for wave density');
-console.log('- Change SHAPE_DENSITY for geometric shapes');
-console.log('- Update SPIRAL_COUNT for spiral lines');
-console.log('- Control NETWORK_DENSITY for network lines');
-console.log('- Adjust CUBE_DENSITY for 3D cubes');
-console.log('- Modify PARTICLE_DENSITY for particles');
-console.log('- Change FOOTER_DOT_COUNT for footer dots');
-console.log('- Update FOOTER_CIRCLE_DENSITY for footer circles');
+console.log('- Adjust DOT_COUNT for floating dots concentration (default: 30)');
+console.log('- Modify SHAPE_DENSITY for geometric shapes (default: 15)');
+console.log('- Change SPIRAL_COUNT for spiral lines (default: 8)');
+console.log('- Update NETWORK_DENSITY for network lines (default: 10)');
+console.log('- Adjust CUBE_DENSITY for 3D cubes (default: 10)');
+console.log('- Modify PARTICLE_DENSITY for particles (default: 25)');
+console.log('- Change FOOTER_DOT_COUNT for footer dots (default: 20)');
